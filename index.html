@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sanjana's Coding Profiles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Manrope:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES — THEME TOKENS
+   ============================================================ */
+:root {
+  /* Light Theme */
+  --bg:           #FFFFFF;
+  --bg-secondary: #F2C7C7;
+  --accent-pink:  #FFB7C5;
+  --accent-sage:  #D5F3D8;
+  --text-primary: #2B2B2B;
+  --text-secondary: #666666;
+  --border:       #E8E8E8;
+  --card-bg:      #FFFFFF;
+  --nav-bg:       rgba(255,255,255,0.88);
+  --btn-primary:  #660033;
+  --btn-hover:    #E673AC;
+  --btn-text:     #FFFFFF;
+  --shadow-sm:    0 2px 12px rgba(102,0,51,0.06);
+  --shadow-md:    0 8px 32px rgba(102,0,51,0.12);
+  --shadow-hover: 0 14px 40px rgba(102,0,51,0.18);
+  --icon-pink:    #FFB7C5;
+  --icon-sage:    #D5F3D8;
+  --icon-burg:    #660033;
+  --icon-forest:  #00520A;
+  --icon-pink-text:   #7a2040;
+  --icon-sage-text:   #1a5c24;
+  --icon-burg-text:   #ffffff;
+  --icon-forest-text: #ffffff;
+
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-card: 18px;
+  --radius-btn: 50px;
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-btn:     'Manrope', system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg:           #1A1A1A;
+  --bg-secondary: #252525;
+  --accent-pink:  #E673AC;
+  --accent-sage:  #469110;
+  --text-primary: #F8F8F8;
+  --text-secondary: #CFCFCF;
+  --border:       #333333;
+  --card-bg:      #252525;
+  --nav-bg:       rgba(26,26,26,0.92);
+  --btn-primary:  #469110;
+  --btn-hover:    #00520A;
+  --btn-text:     #ffffff;
+  --shadow-sm:    0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md:    0 8px 32px rgba(0,0,0,0.4);
+  --shadow-hover: 0 14px 40px rgba(0,0,0,0.55);
+  --icon-pink:    #660033;
+  --icon-sage:    #00520A;
+  --icon-burg:    #660033;
+  --icon-forest:  #00520A;
+  --icon-pink-text:   #FFB7C5;
+  --icon-sage-text:   #D5F3D8;
+  --icon-burg-text:   #FFB7C5;
+  --icon-forest-text: #D5F3D8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   BACKGROUND DECORATION
+   ============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(255,183,197,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(213,243,216,0.12) 0%, transparent 60%);
+  transition: opacity var(--transition);
+}
+
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(102,0,51,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(0,82,10,0.12) 0%, transparent 60%);
+}
+
+/* Sakura petals (light) / blossom silhouettes (dark) — fixed decorative SVG */
+.bg-sakura {
+  position: fixed;
+  top: 0; right: 0;
+  width: 340px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--transition);
+}
+[data-theme="dark"] .bg-sakura { opacity: 0.05; }
+
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 400; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 clamp(16px, 4vw, 48px);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 64px;
+  flex-wrap: wrap;
+}
+
+.nav-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-title span {
+  color: var(--accent-pink);
+}
+
+.search-wrap {
+  flex: 1 1 180px;
+  min-width: 120px;
+  position: relative;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: color var(--transition);
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+#searchInput:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 0 3px rgba(255,183,197,0.25);
+}
+
+[data-theme="dark"] #searchInput:focus {
+  border-color: var(--accent-sage);
+  box-shadow: 0 0 0 3px rgba(70,145,16,0.2);
+}
+
+#searchInput::placeholder { color: var(--text-secondary); }
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform 0.2s;
+  font-size: 0;
+}
+
+.icon-btn:hover { background: var(--bg-secondary); transform: scale(1.08); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.btn-open-all {
+  font-family: var(--font-btn);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 8px 18px;
+  border-radius: var(--radius-btn);
+  background: var(--btn-primary);
+  color: var(--btn-text);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-open-all:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(230,115,172,0.3);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: clamp(48px, 8vw, 96px) clamp(16px, 4vw, 48px) clamp(32px, 5vw, 56px);
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-pink);
+}
+
+[data-theme="dark"] .hero h1 em { color: var(--accent-sage); }
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.hero-quote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-secondary);
+  position: relative;
+  display: inline-block;
+  padding: 0 32px;
+}
+
+.hero-quote::before,
+.hero-quote::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: clamp(20px, 5vw, 60px);
+  height: 1px;
+  background: var(--accent-pink);
+  opacity: 0.6;
+}
+.hero-quote::before { right: 100%; margin-right: -28px; }
+.hero-quote::after  { left: 100%; margin-left: -28px; }
+
+[data-theme="dark"] .hero-quote::before,
+[data-theme="dark"] .hero-quote::after { background: var(--accent-sage); }
+
+/* Bamboo divider */
+.divider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 560px;
+  margin: 28px auto 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.divider-motif {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px) 28px;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.stat-pill strong {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px) 80px;
+}
+
+/* ============================================================
+   GRID / LIST TOGGLE
+   ============================================================ */
+#cardsContainer {
+  transition: opacity 0.3s ease;
+}
+
+/* TILE VIEW */
+#cardsContainer.view-tile {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* LIST VIEW */
+#cardsContainer.view-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============================================================
+   CARD — TILE
+   ============================================================ */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 24px 20px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  cursor: default;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition),
+    background var(--transition);
+  animation: bloom 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes bloom {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-pink);
+}
+
+[data-theme="dark"] .card:hover { border-color: var(--accent-sage); }
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,183,197,0.06) 0%, transparent 60%);
+}
+
+.card:hover::after { opacity: 1; }
+
+/* Initial icon */
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .card-icon { transform: scale(1.08); }
+
+.icon-pink   { background: var(--icon-pink);   color: var(--icon-pink-text);   }
+.icon-sage   { background: var(--icon-sage);   color: var(--icon-sage-text);   }
+.icon-burg   { background: var(--icon-burg);   color: var(--icon-burg-text);   }
+.icon-forest { background: var(--icon-forest); color: var(--icon-forest-text); }
+
+.card-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  min-height: 36px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-visit, .btn-copy {
+  font-family: var(--font-btn);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 7px 16px;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-visit {
+  background: var(--btn-primary);
+  color: var(--btn-text);
+}
+
+.btn-visit:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(230,115,172,0.35);
+}
+
+[data-theme="dark"] .btn-visit:hover {
+  box-shadow: 0 4px 14px rgba(0,82,10,0.4);
+}
+
+.btn-copy {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.btn-copy:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--accent-pink);
+}
+
+[data-theme="dark"] .btn-copy:hover { border-color: var(--accent-sage); }
+
+.btn-copy.copied {
+  color: #00520A;
+  border-color: #D5F3D8;
+  background: #D5F3D8;
+}
+
+[data-theme="dark"] .btn-copy.copied {
+  color: #D5F3D8;
+  border-color: #00520A;
+  background: rgba(0,82,10,0.2);
+}
+
+/* Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.55s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ============================================================
+   CARD — LIST VIEW OVERRIDE
+   ============================================================ */
+.view-list .card {
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+
+.view-list .card-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.view-list .card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.view-list .card-name {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.view-list .card-desc {
+  font-size: 0.78rem;
+  min-height: unset;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-list .card-actions {
+  width: auto;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* In tile mode, card-body isn't a real wrapper — keep desc/name as siblings */
+.card-body { width: 100%; }
+.view-tile .card-body { display: contents; }
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 32px;
+  gap: 20px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.empty-state.visible { display: flex; }
+
+.empty-sakura {
+  width: 100px;
+  opacity: 0.45;
+}
+
+.empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.empty-msg {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: border-color var(--transition);
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+#backToTop {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--btn-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(102,0,51,0.3);
+  opacity: 0;
+  transform: translateY(16px) scale(0.8);
+  transition: opacity 0.3s, transform 0.3s, background var(--transition);
+  pointer-events: none;
+  z-index: 200;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  background: var(--btn-hover);
+  transform: translateY(-2px) scale(1.05);
+}
+
+#backToTop svg { width: 18px; height: 18px; }
+
+/* ============================================================
+   TOOLTIP
+   ============================================================ */
+[data-tooltip] { position: relative; }
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: var(--text-primary);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 300;
+}
+
+[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ============================================================
+   TOGGLE ACTIVE STATES
+   ============================================================ */
+.icon-btn.active {
+  background: var(--bg-secondary);
+  border-color: var(--accent-pink);
+}
+
+[data-theme="dark"] .icon-btn.active { border-color: var(--accent-sage); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .nav-inner {
+    height: auto;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .nav-title { font-size: 0.95rem; }
+
+  .btn-open-all { font-size: 0.72rem; padding: 7px 13px; }
+
+  .hero-quote::before,
+  .hero-quote::after { display: none; }
+
+  .view-list .card-desc { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== BACKGROUND SAKURA SVG ===================== -->
+<svg class="bg-sakura" viewBox="0 0 340 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Branch -->
+  <path d="M340 0 Q260 120 200 200 Q140 280 120 380 Q110 430 100 480" stroke="#FFB7C5" stroke-width="2.5" fill="none"/>
+  <!-- Blossoms -->
+  <g fill="#FFB7C5">
+    <circle cx="210" cy="195" r="7"/><circle cx="225" cy="188" r="5"/><circle cx="200" cy="205" r="5"/>
+    <circle cx="215" cy="210" r="4"/><circle cx="230" cy="200" r="4"/>
+    <circle cx="175" cy="240" r="6"/><circle cx="188" cy="232" r="5"/><circle cx="165" cy="250" r="4"/>
+    <circle cx="265" cy="145" r="5"/><circle cx="278" cy="137" r="4"/><circle cx="255" cy="155" r="4"/>
+    <circle cx="145" cy="310" r="6"/><circle cx="160" cy="302" r="4"/>
+    <circle cx="300" cy="98" r="4"/><circle cx="312" cy="90" r="3"/>
+    <circle cx="130" cy="355" r="5"/><circle cx="118" cy="365" r="4"/>
+  </g>
+  <!-- Leaves -->
+  <g fill="#D5F3D8" opacity="0.7">
+    <ellipse cx="218" cy="218" rx="10" ry="5" transform="rotate(-30 218 218)"/>
+    <ellipse cx="172" cy="255" rx="9" ry="4" transform="rotate(20 172 255)"/>
+    <ellipse cx="148" cy="318" rx="9" ry="4" transform="rotate(-15 148 318)"/>
+  </g>
+</svg>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <span class="nav-title">Sanjana's <span>Profiles</span></span>
+
+    <div class="search-wrap" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search platforms…"
+        aria-label="Search platforms"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="nav-controls">
+      <!-- Tile / List toggle -->
+      <button class="icon-btn active" id="tileBtn" aria-label="Tile view" data-tooltip="Tile view">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="listBtn" aria-label="List view" data-tooltip="List view">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+          <circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+
+      <!-- Theme toggle -->
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme" data-tooltip="Toggle theme">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Open All -->
+      <button class="btn-open-all" id="openAllBtn" aria-label="Open all profiles">Open All</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" role="banner">
+  <h1>Sanjana's<br /><em>Coding Profiles</em></h1>
+  <p class="hero-subtitle">One place for my coding journey across platforms.</p>
+  <p class="hero-quote">"Every solved problem is another step forward."</p>
+  <div class="divider" aria-hidden="true">
+    <span class="divider-line"></span>
+    <span class="divider-motif">🌸</span>
+    <span class="divider-line"></span>
+  </div>
+</header>
+
+<!-- ===================== STATS ===================== -->
+<section class="stats-section" aria-label="Statistics">
+  <div class="stats-grid" role="list">
+    <div class="stat-pill" role="listitem">
+      <strong id="statTotal">0</strong> Total Platforms
+    </div>
+    <div class="stat-pill" role="listitem">
+      <strong id="statVisible">0</strong> Profiles Visible
+    </div>
+    <div class="stat-pill" role="listitem">
+      <strong id="statView">Tile</strong> Current View
+    </div>
+    <div class="stat-pill" role="listitem">
+      <strong id="statTheme">Light</strong> Active Theme
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MAIN CARDS ===================== -->
+<main class="main" role="main">
+  <div id="cardsContainer" class="view-tile" aria-label="Coding platforms">
+    <!-- Cards injected here -->
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState" aria-live="polite">
+    <svg class="empty-sakura" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M60 10 Q65 30 80 40 Q65 35 60 55 Q55 35 40 40 Q55 30 60 10Z" fill="#FFB7C5" opacity="0.6"/>
+      <path d="M60 55 Q65 75 80 85 Q65 80 60 100 Q55 80 40 85 Q55 75 60 55Z" fill="#D5F3D8" opacity="0.6"/>
+      <circle cx="60" cy="55" r="4" fill="#FFB7C5" opacity="0.8"/>
+      <path d="M60 100 L60 135" stroke="#D5F3D8" stroke-width="2" opacity="0.4"/>
+    </svg>
+    <p class="empty-title">No platforms found.</p>
+    <p class="empty-msg">Perhaps the next coding adventure awaits.</p>
+  </div>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" role="contentinfo">
+  Made with ☕ and curiosity by Sanjana &mdash; <span id="footerYear"></span>
+</footer>
+
+<!-- ===================== BACK TO TOP ===================== -->
+<button id="backToTop" aria-label="Back to top" data-tooltip="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ----------------------------------------------------------
+   PLATFORM DATA
+   ---------------------------------------------------------- */
+const PLATFORMS = [
+  { name: "LinkedIn",       description: "Professional network & career portfolio.",      url: "https://linkedin.com/in/sanjana",              letter: "L" },
+  { name: "LeetCode",       description: "Algorithmic problem-solving & interview prep.", url: "https://leetcode.com/u/SanjanaGadamsetty/",                 letter: "L" },
+  { name: "GeeksforGeeks",  description: "CS concepts, practice, and articles.",          url: "https://www.geeksforgeeks.org/profile/gvnsanjana09",  letter: "G" },
+  { name: "CodeChef",       description: "Competitive programming & monthly contests.",   url: "https://www.codechef.com/users/bit_flux_radha",           letter: "C" },
+  { name: "Codeforces",     description: "Rated contests and global rankings.",           url: "https://codeforces.com/profile/gvnsanjana",       letter: "C" },
+  { name: "HackerRank",     description: "Skill certifications & coding challenges.",     url: "https://hackerrank.com/sanjana",               letter: "H" },
+  { name: "HackerEarth",    description: "Hackathons, sprint challenges & hiring.",       url: "https://hackerearth.com/@sanjana",             letter: "H" },
+  { name: "AtCoder",        description: "Japanese CP platform with quality problems.",   url: "https://atcoder.jp/users/sanjanagvn",             letter: "A" },
+  { name: "InterviewBit",   description: "Structured DSA for product-company prep.",      url: "https://interviewbit.com/users/sanjana",       letter: "I" },
+  { name: "SkillRack",      description: "Campus-level coding tests & leaderboards.",     url: "https://skillrack.com/profile/sanjana",        letter: "S" },
+  { name: "CSES",           description: "Curated competitive programming problemset.",   url: "https://cses.fi/user/402663",                 letter: "C" },
+  { name: "TakeUForward",   description: "Striver's SDE sheet & DSA roadmaps.",          url: "https://takeuforward.org/profile/bit_flux_radha",     letter: "T" },
+  { name: "NeetCode",       description: "NeetCode 150 & video DSA explanations.",       url: "https://neetcode.io/profile/sanjana",          letter: "N" },
+  { name: "GitHub",         description: "Open-source projects, repos & contributions.", url: "https://github.com/sanjana",                   letter: "G" },
+  { name: "Bitbucket",      description: "Git repo hosting for team collaboration.",      url: "https://bitbucket.org/sanjana",                letter: "B" },
+  { name: "FinishDSA",      description: "Structured DSA practice to finish strong.",    url: "https://finishdsa.com/profile/sanjana",        letter: "F" },
+  { name: "Edabit",         description: "Gamified coding challenges for all levels.",   url: "https://edabit.com/user/sanjana",              letter: "E" },
+  { name: "LintCode",       description: "CN-origin OJ with algorithm tag filtering.",   url: "https://lintcode.com/user/sanjana",            letter: "L" },
+  { name: "Codolio",        description: "Single dashboard to track all CP progress.",   url: "https://codolio.com/profile/sanjana",          letter: "C" },
+];
+
+/* Icon color cycling */
+const ICON_CLASSES = ["icon-pink","icon-sage","icon-burg","icon-forest"];
+
+/* ----------------------------------------------------------
+   STATE
+   ---------------------------------------------------------- */
+let currentView  = localStorage.getItem('scpView')  || 'tile';
+let currentTheme = localStorage.getItem('scpTheme') || 'light';
+let searchQuery  = '';
+
+/* ----------------------------------------------------------
+   INIT
+   ---------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(currentTheme, false);
+  applyView(currentView, false);
+  renderCards();
+  updateStats();
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+  /* Search */
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    renderCards();
+    updateStats();
+  });
+
+  /* Theme */
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(currentTheme, true);
+    localStorage.setItem('scpTheme', currentTheme);
+    updateStats();
+  });
+
+  /* View toggle */
+  document.getElementById('tileBtn').addEventListener('click', () => {
+    applyView('tile');
+    localStorage.setItem('scpView', 'tile');
+    updateStats();
+  });
+
+  document.getElementById('listBtn').addEventListener('click', () => {
+    applyView('list');
+    localStorage.setItem('scpView', 'list');
+    updateStats();
+  });
+
+  /* Open All */
+  document.getElementById('openAllBtn').addEventListener('click', openAll);
+
+  /* Back to Top */
+  const btn = document.getElementById('backToTop');
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 320);
+  }, { passive: true });
+});
+
+/* ----------------------------------------------------------
+   THEME
+   ---------------------------------------------------------- */
+function applyTheme(theme, animate) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('iconSun').style.display  = theme === 'dark' ? 'block' : 'none';
+  document.getElementById('iconMoon').style.display = theme === 'light' ? 'block' : 'none';
+}
+
+/* ----------------------------------------------------------
+   VIEW
+   ---------------------------------------------------------- */
+function applyView(view, save = true) {
+  currentView = view;
+  const container = document.getElementById('cardsContainer');
+  container.classList.toggle('view-tile', view === 'tile');
+  container.classList.toggle('view-list', view === 'list');
+
+  document.getElementById('tileBtn').classList.toggle('active', view === 'tile');
+  document.getElementById('listBtn').classList.toggle('active', view === 'list');
+
+  if (save) localStorage.setItem('scpView', view);
+}
+
+/* ----------------------------------------------------------
+   RENDER CARDS
+   ---------------------------------------------------------- */
+function renderCards() {
+  const container  = document.getElementById('cardsContainer');
+  const emptyState = document.getElementById('emptyState');
+
+  const filtered = PLATFORMS.filter(p =>
+    !searchQuery || p.name.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery)
+  );
+
+  container.innerHTML = '';
+
+  if (filtered.length === 0) {
+    emptyState.classList.add('visible');
+    return;
+  }
+
+  emptyState.classList.remove('visible');
+
+  filtered.forEach((platform, index) => {
+    const iconClass = ICON_CLASSES[index % ICON_CLASSES.length];
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', platform.name);
+    card.style.animationDelay = `${index * 0.04}s`;
+
+    card.innerHTML = `
+      <div class="card-icon ${iconClass}" aria-hidden="true">${platform.letter}</div>
+      <div class="card-body">
+        <h3 class="card-name" data-tooltip="${platform.name}">${platform.name}</h3>
+        <p class="card-desc">${platform.description}</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-visit" data-url="${platform.url}" aria-label="Visit ${platform.name} profile">Visit Profile</button>
+        <button class="btn-copy"  data-url="${platform.url}" aria-label="Copy ${platform.name} link">Copy Link</button>
+      </div>
+    `;
+
+    /* Visit */
+    card.querySelector('.btn-visit').addEventListener('click', function(e) {
+      addRipple(this, e);
+      window.open(this.dataset.url, '_blank', 'noopener,noreferrer');
+    });
+
+    /* Copy */
+    card.querySelector('.btn-copy').addEventListener('click', function(e) {
+      addRipple(this, e);
+      copyLink(this);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* ----------------------------------------------------------
+   COPY LINK
+   ---------------------------------------------------------- */
+function copyLink(btn) {
+  const url = btn.dataset.url;
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Link';
+      btn.classList.remove('copied');
+    }, 1800);
+  }).catch(() => {
+    /* Fallback */
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Link';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+
+/* ----------------------------------------------------------
+   RIPPLE EFFECT
+   ---------------------------------------------------------- */
+function addRipple(btn, e) {
+  const rect = btn.getBoundingClientRect();
+  const r = document.createElement('span');
+  r.className = 'ripple';
+  const size = Math.max(rect.width, rect.height);
+  r.style.cssText = `
+    width: ${size}px; height: ${size}px;
+    left: ${e.clientX - rect.left - size/2}px;
+    top:  ${e.clientY - rect.top  - size/2}px;
+  `;
+  btn.appendChild(r);
+  r.addEventListener('animationend', () => r.remove());
+}
+
+/* ----------------------------------------------------------
+   OPEN ALL
+   ---------------------------------------------------------- */
+function openAll() {
+  const count = PLATFORMS.length;
+  if (!confirm(`Open all ${count} profile tabs at once? Your browser may block some.`)) return;
+  PLATFORMS.forEach(p => window.open(p.url, '_blank', 'noopener,noreferrer'));
+}
+
+/* ----------------------------------------------------------
+   STATS
+   ---------------------------------------------------------- */
+function updateStats() {
+  const filtered = PLATFORMS.filter(p =>
+    !searchQuery || p.name.toLowerCase().includes(searchQuery) || p.description.toLowerCase().includes(searchQuery)
+  );
+
+  document.getElementById('statTotal').textContent   = PLATFORMS.length;
+  document.getElementById('statVisible').textContent  = filtered.length;
+  document.getElementById('statView').textContent     = currentView === 'tile' ? 'Tile' : 'List';
+  document.getElementById('statTheme').textContent    = currentTheme === 'light' ? 'Light' : 'Dark';
+}
+</script>
+</body>
+</html>

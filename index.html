@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sanjana's Identity Grid</title>
+
+  <meta name="description"
+    content="Explore Sanjana Gadamsetty's digital identity, coding platforms, professional profiles, projects and online presence.">
+
+  <meta name="theme-color" content="#080B16">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"
+    sizes="32x32" href="./favicon-32.png?v=3">
+  <link rel="shortcut icon"
+    href="./favicon.ico?v=3">
+  <link rel="apple-touch-icon"
+    href="./favicon-180.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+    href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ========================================
+       GLOBAL VARIABLES
+    ======================================== */
+
+    :root {
+      --bg: #080B16;
+      --surface: #101628;
+      --surface-2: #151D33;
+      --text: #F2F7FF;
+      --muted: #8B9AB6;
+
+      --cyan: #00E5FF;
+      --pink: #FF39C8;
+      --purple: #9D4DFF;
+
+      --border: rgba(0,229,255,.18);
+      --shadow: 0 0 30px rgba(0,229,255,.08);
+
+      --font-heading: "Chakra Petch", sans-serif;
+      --font-body: "Inter", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+
+    body.light {
+      --bg: #F1F6FF;
+      --surface: #FFFFFF;
+      --surface-2: #EAF1FF;
+      --text: #11182B;
+      --muted: #52627D;
+      --border: rgba(0,119,170,.2);
+      --shadow: 0 8px 30px rgba(20,50,90,.08);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--pink);
+      outline-offset: 4px;
+    }
+
+    /* ========================================
+       CYBERPUNK BACKGROUND GRID
+    ======================================== */
+
+    .cyber-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(0,229,255,.08),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(255,57,200,.08),
+          transparent 40%
+        );
+
+      opacity: .35;
+    }
+
+    .cyber-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(0,229,255,.045) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(0,229,255,.045) 1px,
+          transparent 1px
+        );
+
+      background-size: 50px 50px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+    }
+
+    /* ========================================
+       HEADER
+    ======================================== */
+
+    .header {
+      max-width: 1300px;
+      margin: auto;
+      padding: 25px 30px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      position: relative;
+      z-index: 5;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      display: block;
+      overflow: visible;
+
+      transition:
+        transform .3s ease,
+        filter .3s ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: scale(1.08);
+      filter: drop-shadow(
+        0 0 10px rgba(0,229,255,.45)
+      );
+    }
+
+    .btn {
+      padding: 11px 18px;
+      background: var(--surface);
+      color: var(--text);
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 18px rgba(0,229,255,.18);
+      transform: translateY(-2px);
+    }
+
+    /* ========================================
+       LANDING PAGE — FROSTED DEPTH
+    ======================================== */
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      padding: 100px 25px 80px;
+      text-align: center;
+
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      background:
+        radial-gradient(
+          ellipse at 18% 25%,
+          rgba(0,229,255,.09),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 82% 65%,
+          rgba(157,77,255,.13),
+          transparent 52%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(12,20,40,.85),
+          rgba(8,11,22,.55),
+          rgba(20,12,38,.75)
+        );
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      width: 480px;
+      height: 480px;
+
+      top: -220px;
+      right: -160px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        rgba(0,229,255,.13),
+        rgba(157,77,255,.09),
+        rgba(255,57,200,.06)
+      );
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+
+      box-shadow:
+        inset 0 0 50px rgba(255,255,255,.025),
+        0 0 90px rgba(0,229,255,.035);
+
+      animation:
+        frostedFloat 14s ease-in-out infinite alternate;
+
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      width: 330px;
+      height: 330px;
+
+      bottom: -170px;
+      left: -120px;
+
+      border-radius: 35%;
+      transform: rotate(-18deg);
+
+      background: linear-gradient(
+        135deg,
+        rgba(157,77,255,.11),
+        rgba(0,229,255,.035)
+      );
+
+      border: 1px solid rgba(255,255,255,.045);
+
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      box-shadow:
+        0 0 80px rgba(157,77,255,.035);
+
+      pointer-events: none;
+    }
+
+    @keyframes frostedFloat {
+      from {
+        transform: translate3d(0,0,0);
+      }
+
+      to {
+        transform: translate3d(-30px,35px,0);
+      }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 30px;
+
+      background: rgba(0,229,255,.04);
+      color: var(--cyan);
+
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(38px,6vw,85px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--purple),
+        var(--pink)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+
+      filter: drop-shadow(
+        0 0 20px rgba(0,229,255,.15)
+      );
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+
+      margin: 25px auto;
+
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .hero-line {
+      height: 2px;
+      width: 160px;
+
+      margin: 35px auto 0;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        var(--pink),
+        transparent
+      );
+
+      box-shadow: 0 0 15px var(--cyan);
+    }
+
+    /* ========================================
+       PROFILES — MIDNIGHT AURORA
+    ======================================== */
+
+    .container {
+      max-width: 1300px;
+      margin: 50px auto 0;
+      padding: 55px 30px 100px;
+
+      position: relative;
+      isolation: isolate;
+
+      border-radius: 24px;
+
+      background:
+        radial-gradient(
+          ellipse at 10% 20%,
+          rgba(0,229,255,.08),
+          transparent 42%
+        ),
+        radial-gradient(
+          ellipse at 90% 35%,
+          rgba(157,77,255,.12),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 45% 90%,
+          rgba(255,57,200,.07),
+          transparent 50%
+        ),
+        linear-gradient(
+          180deg,
+          #080B16,
+          #0B1022,
+          #080B16
+        );
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      inset: 0;
+      border-radius: inherit;
+
+      background:
+        radial-gradient(
+          ellipse at 30% 30%,
+          rgba(0,229,255,.065),
+          transparent 45%
+        ),
+        radial-gradient(
+          ellipse at 75% 65%,
+          rgba(157,77,255,.08),
+          transparent 48%
+        );
+
+      pointer-events: none;
+
+      animation:
+        auroraBreath 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes auroraBreath {
+      from {
+        opacity: .45;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ========================================
+       SECTION HEADINGS
+    ======================================== */
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(22px,3vw,34px);
+      font-weight: 700;
+
+      margin: 0 0 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .count {
+      color: var(--cyan);
+
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+
+    /* ========================================
+       SEARCH & TOOLBAR
+    ======================================== */
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-wrap::before {
+      content: "⌕";
+
+      position: absolute;
+      left: 17px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: var(--cyan);
+      font-size: 25px;
+
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+
+      padding: 15px 18px 15px 48px;
+
+      background: var(--surface);
+      color: var(--text);
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      outline: none;
+
+      font-family: var(--font-body);
+      font-size: 15px;
+
+      transition: .25s;
+    }
+
+    #search:focus {
+      border-color: var(--cyan);
+
+      box-shadow:
+        0 0 20px rgba(0,229,255,.1);
+    }
+
+    #search::placeholder {
+      color: var(--muted);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* ========================================
+       CATEGORY FILTERS
+    ======================================== */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .chip {
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+      color: var(--muted);
+
+      padding: 9px 16px;
+      border-radius: 6px;
+
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: .25s;
+    }
+
+    .chip:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .chip.active {
+      color: #06101A;
+
+      background: var(--cyan);
+      border-color: var(--cyan);
+
+      box-shadow:
+        0 0 15px rgba(0,229,255,.3);
+    }
+
+    /* ========================================
+       PROFILE CARDS
+    ======================================== */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap: 22px;
+    }
+
+    .card {
+      --card-accent: var(--cyan);
+
+      background: linear-gradient(
+        145deg,
+        rgba(18,25,48,.92),
+        rgba(13,18,37,.88)
+      );
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      padding: 25px;
+
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
+      transition:
+        transform .3s,
+        box-shadow .3s,
+        border-color .3s;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 45%;
+      height: 2px;
+
+      background: var(--card-accent);
+
+      box-shadow:
+        0 0 15px var(--card-accent);
+    }
+
+    .card::after {
+      content: "";
+
+      position: absolute;
+      width: 120px;
+      height: 120px;
+
+      border-radius: 50%;
+
+      background: var(--card-accent);
+
+      opacity: .05;
+      filter: blur(40px);
+
+      right: -40px;
+      top: -40px;
+
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--card-accent);
+
+      box-shadow:
+        0 14px 40px rgba(0,0,0,.22),
+        0 0 25px rgba(0,229,255,.055);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .symbol {
+      width: 56px;
+      height: 56px;
+
+      display: grid;
+      place-items: center;
+
+      background: rgba(255,255,255,.025);
+
+      border: 1px solid var(--card-accent);
+      border-radius: 12px;
+
+      color: var(--card-accent);
+
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow:
+        inset 0 0 15px rgba(255,255,255,.02);
+    }
+
+    .category {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .card-info h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+
+      margin: 0 0 10px;
+    }
+
+    .card-info p {
+      margin: 0;
+
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .open,
+    .copy {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+
+      padding: 10px 13px;
+      border-radius: 6px;
+
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: .2s;
+    }
+
+    .open {
+      color: var(--card-accent);
+      border-color: var(--card-accent);
+    }
+
+    .open:hover {
+      background: var(--card-accent);
+      color: #07101B;
+    }
+
+    .copy:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+    }
+
+    /* ========================================
+       LIST VIEW
+    ======================================== */
+
+    .cards.list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cards.list .card {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1.5fr auto;
+
+      align-items: center;
+
+      gap: 20px;
+      padding: 18px 24px;
+    }
+
+    .cards.list .card-top {
+      margin: 0;
+      justify-content: flex-start;
+    }
+
+    .cards.list .card-actions {
+      margin: 0;
+    }
+
+    .cards.list .card:hover {
+      transform: translateX(4px);
+    }
+
+    /* ========================================
+       EMPTY STATE
+    ======================================== */
+
+    .empty {
+      padding: 60px 20px;
+
+      text-align: center;
+
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+
+      color: var(--muted);
+    }
+
+    .empty[hidden] {
+      display: none;
+    }
+
+    .empty h3 {
+      font-family: var(--font-heading);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      text-align: center;
+      padding: 35px 20px;
+
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: var(--cyan);
+    }
+
+    /* ========================================
+       TOAST
+    ======================================== */
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+
+      transform: translate(-50%,30px);
+
+      background: var(--surface-2);
+      color: var(--text);
+
+      border: 1px solid var(--cyan);
+
+      padding: 13px 25px;
+      border-radius: 8px;
+
+      box-shadow:
+        0 0 25px rgba(0,229,255,.2);
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition: .3s;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%,0);
+    }
+
+    /* ========================================
+       SCROLL TO TOP
+    ======================================== */
+
+    .top {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+
+      width: 45px;
+      height: 45px;
+
+      border: 1px solid var(--cyan);
+      background: var(--surface);
+      color: var(--cyan);
+
+      border-radius: 10px;
+      font-size: 22px;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transform: translateY(20px);
+      transition: .3s;
+
+      z-index: 20;
+    }
+
+    .top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       LIGHT MODE
+    ======================================== */
+
+    body.light .hero {
+      background:
+        radial-gradient(
+          ellipse at 20% 30%,
+          rgba(0,180,220,.08),
+          transparent 50%
+        ),
+        linear-gradient(
+          135deg,
+          #F5F9FF,
+          #EDEFFF,
+          #F9F5FF
+        );
+    }
+
+    body.light .container {
+      background:
+        radial-gradient(
+          ellipse at 80% 30%,
+          rgba(157,77,255,.08),
+          transparent 48%
+        ),
+        linear-gradient(
+          180deg,
+          #F5F9FF,
+          #EDF2FF
+        );
+    }
+
+    body.light .card {
+      background: rgba(255,255,255,.85);
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1000px) {
+      .cards {
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header {
+        padding: 20px;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero {
+        padding: 70px 20px 60px;
+        border-radius: 16px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero::before {
+        width: 280px;
+        height: 280px;
+        top: -130px;
+        right: -120px;
+      }
+
+      .hero::after {
+        width: 200px;
+        height: 200px;
+        bottom: -100px;
+        left: -100px;
+      }
+
+      .container {
+        margin-top: 30px;
+        padding: 35px 18px 70px;
+        border-radius: 16px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .cards.list .card {
+        display: block;
+      }
+
+      .cards.list .card-top {
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .cards.list .card-actions {
+        margin-top: 20px;
+      }
+
+      .toolbar-actions {
+        width: 100%;
+      }
+
+      .toolbar-actions .btn {
+        flex: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Grid -->
+  <div class="cyber-bg" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+
+    <a href="#"
+       class="brand"
+       aria-label="Sanjana's Identity Grid - Home">
+
+      <!-- Transparent Neon Grid Logo -->
+      <svg class="brand-logo"
+           viewBox="0 0 64 64"
+           xmlns="http://www.w3.org/2000/svg"
+           role="img"
+           aria-label="Identity Grid Logo">
+
+        <defs>
+          <linearGradient id="logoGradient"
+                          x1="0" y1="0"
+                          x2="1" y2="1">
+            <stop offset="0%" stop-color="#00E5FF"/>
+            <stop offset="55%" stop-color="#8B4DFF"/>
+            <stop offset="100%" stop-color="#FF39C8"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="6" y="6"
+              width="23" height="23" rx="5"
+              fill="none"
+              stroke="#00E5FF"
+              stroke-width="2.5"/>
+
+        <rect x="35" y="6"
+              width="23" height="23" rx="5"
+              fill="none"
+              stroke="#D24BFF"
+              stroke-width="2.5"/>
+
+        <rect x="6" y="35"
+              width="23" height="23" rx="5"
+              fill="none"
+              stroke="#8055FF"
+              stroke-width="2.5"/>
+
+        <rect x="35" y="35"
+              width="23" height="23" rx="5"
+              fill="none"
+              stroke="url(#logoGradient)"
+              stroke-width="2.5"/>
+
+        <path
+          d="M46.5 10
+             L49 15.5
+             L54.5 18
+             L49 20.5
+             L46.5 26
+             L44 20.5
+             L38.5 18
+             L44 15.5Z"
+          fill="#E9DFFF"/>
+      </svg>
+
+    </a>
+
+    <div class="header-actions">
+      <button class="btn"
+              id="theme"
+              type="button">
+        ☾ DARK MODE
+      </button>
+    </div>
+
+  </header>
+
+  <!-- Landing Section: Frosted Depth -->
+  <section class="hero" id="home">
+
+    <div class="eyebrow">
+      DIGITAL IDENTITY // ONLINE
+    </div>
+
+    <h1>
+      SANJANA'S<br>
+      <span class="gradient-text">
+        Identity Grid
+      </span>
+    </h1>
+
+    <p>
+      One identity. Multiple platforms. Infinite possibilities.
+      Explore my digital presence, coding journey, projects,
+      professional networks, and everything in between.
+    </p>
+
+    <div class="hero-line"></div>
+
+  </section>
+
+  <!-- Profiles Section: Midnight Aurora -->
+  <main class="container" id="profiles">
+
+    <div class="section-heading">
+
+      <div>
+        <h2>
+          EXPLORE THE
+          <span style="color:var(--cyan)">
+            NETWORK
+          </span>
+        </h2>
+
+        <p>
+          Discover my presence across digital platforms.
+        </p>
+      </div>
+
+      <div class="count">
+        <span id="visible">0</span> /
+        <span id="total">0</span>
+        PLATFORMS
+      </div>
+
+    </div>
+
+    <!-- Search -->
+    <div class="toolbar">
+
+      <div class="search-wrap">
+        <input
+          type="search"
+          id="search"
+          placeholder="Search platforms..."
+          aria-label="Search platforms"
+          autocomplete="off">
+      </div>
+
+      <div class="toolbar-actions">
+
+        <button class="btn"
+                id="view"
+                type="button">
+          ▦ TILE VIEW
+        </button>
+
+        <button class="btn"
+                id="reset"
+                type="button">
+          RESET
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Filters -->
+    <div class="filters"
+         id="filters"
+         aria-label="Platform categories">
+    </div>
+
+    <!-- Dynamic Cards -->
+    <div class="cards" id="cards"></div>
+
+    <!-- Empty State -->
+    <div class="empty" id="empty" hidden>
+      <h3>NO SIGNAL FOUND</h3>
+      <p>
+        No platforms match your search.
+        Try another keyword.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <p>
+      DESIGNED & DEVELOPED BY
+      <strong>SANJANA GADAMSETTY</strong>
+    </p>
+
+    <p>
+      © <span id="year"></span>
+      SANJANA'S IDENTITY GRID //
+      ALL SYSTEMS OPERATIONAL
+    </p>
+
+  </footer>
+
+  <!-- Scroll To Top -->
+  <button
+    class="top"
+    id="top"
+    type="button"
+    aria-label="Scroll to top">
+    ↑
+  </button>
+
+  <!-- Toast -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite">
+  </div>
+
+  <!-- JavaScript -->
+  <script src="profiles.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

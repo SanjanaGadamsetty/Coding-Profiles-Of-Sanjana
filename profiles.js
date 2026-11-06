@@ -9,8 +9,6 @@
 
 window.CODING_PROFILES = [
 
-  // ─── SOCIAL MEDIA & NETWORKING ───
-
   {
     name: "Twitter (X)",
     category: "Social Media & Networking",
@@ -40,8 +38,6 @@ window.CODING_PROFILES = [
     url: "https://linkedin.com/in/sanjana"
   },
 
-  // ─── CONTENT CREATION & PUBLISHING ───
-
   {
     name: "YouTube",
     category: "Content Creation & Publishing",
@@ -56,8 +52,6 @@ window.CODING_PROFILES = [
     color: "#FFFFFF",
     url: "https://medium.com/@gvnsanjana.ds"
   },
-
-  // ─── DEVELOPMENT & CODE HOSTING ───
 
   {
     name: "GitHub",
@@ -80,8 +74,6 @@ window.CODING_PROFILES = [
     color: "#FC6D26",
     url: "https://gitlab.com/gvnsanjana.ds"
   },
-
-  // ─── COMPETITIVE PROGRAMMING ───
 
   {
     name: "LeetCode",
@@ -139,8 +131,6 @@ window.CODING_PROFILES = [
     color: "#38BDF8",
     url: "https://www.spoj.com/myaccount/"
   },
-
-  // ─── CODING PRACTICE & ASSESSMENTS ───
 
   {
     name: "GeeksforGeeks",
@@ -234,8 +224,6 @@ window.CODING_PROFILES = [
     url: ""
   },
 
-  // ─── AI & DATA SCIENCE ───
-
   {
     name: "Kaggle",
     category: "AI & Data Science",
@@ -244,7 +232,6 @@ window.CODING_PROFILES = [
     url: "https://www.kaggle.com/sanjanagadamsetty"
   },
 
-  // ─── PROJECTS & HACKATHONS ───
 
   {
     name: "Devpost",

@@ -196,7 +196,7 @@ window.CODING_PROFILES = [
     category: "DSA Learning & Roadmaps",
     icon: "TU",
     color: "#F97316",
-    url: "https://takeuforward.org/profile/bit_flux_radha"
+    url: "https://takeuforward.org/profile/sanjanagadamsetty"
   },
   {
     name: "NeetCode",

@@ -21,7 +21,7 @@ window.CODING_PROFILES = [
     category: "Social Media & Networking",
     icon: "IG",
     color: "#E1306C",
-    url: "instagram.com/stack.of.dreams"
+    url: "https://www.instagram.com/stack.of.dreams/"
   },
   {
     name: "Facebook",
@@ -35,7 +35,7 @@ window.CODING_PROFILES = [
     category: "Social Media & Networking",
     icon: "IN",
     color: "#0A66C2",
-    url: "https://linkedin.com/in/sanjana"
+    url: "www.linkedin.com/in/sanjana-gadamsetty"
   },
 
   {
@@ -80,7 +80,7 @@ window.CODING_PROFILES = [
     category: "Competitive Programming",
     icon: "LC",
     color: "#FFA116",
-    url: "https://leetcode.com/u/SanjanaGadamsetty/"
+    url: "https://leetcode.com/u/sanjana-gadamsetty/"
   },
   {
     name: "AtCoder",

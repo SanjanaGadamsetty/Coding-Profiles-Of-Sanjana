@@ -79,6 +79,13 @@ window.CODING_PROFILES = [
     url: "https://devpost.com/gvnsanjana-ds"
   },
   {
+    name: "Devscape",
+    category: "System Design",
+    icon: "DS",
+    color: "#FF477E",
+    url: "https://devscape.in/"
+  },
+  {
     name: "Edabit",
     category: "Coding Practice & Assessments",
     icon: "ED",
@@ -210,6 +217,13 @@ window.CODING_PROFILES = [
     icon: "SR",
     color: "#00D9A6",
     url: "http://www.skillrack.com/profile/538210/c45f9f55d22cf6e52bc258ad6f4aae7a3663a3d3"
+  },
+  {
+    name: "System Designer",
+    category: "System Design",
+    icon: "SD",
+    color: "#FFA116",
+    url: "https://www.systemdesigner.net/"
   },
   {
     name: "TakeUForward",

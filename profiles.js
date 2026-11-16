@@ -114,6 +114,13 @@ window.CODING_PROFILES = [
     url: "https://www.finishdsa.com/dashboard"
   },
   {
+    name: "Fueler",
+    category: "Job Portal",
+    icon: "F",
+    color: "#53EAFD",
+    url: "https://fueler.io/gvnsanjana"
+  },
+  {
     name: "GeeksforGeeks",
     category: "Coding Practice & Assessments",
     icon: "GFG",
